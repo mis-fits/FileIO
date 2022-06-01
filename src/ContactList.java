@@ -86,4 +86,42 @@ public class ContactList extends ContactManager {
 
 
     } //end deleteContact Method
+
+    public static void findContact() throws IOException {
+        boolean searchRes = true;
+        Input entry = new Input();
+        System.out.print("Enter new contact Full Name and Phone Number: ");
+        String name = entry.getString();
+        List<String> currentContacts = Files.readAllLines(filepath);
+        // Loop through contacts
+
+        for (String contact : currentContacts) {
+            // checking if name matches user input
+            if (contact.equalsIgnoreCase(name)) {
+                System.out.println("Found the name!");
+                System.out.println(contact);
+                searchRes = true;
+                break;
+            } else {
+                searchRes = false;
+            }
+        } //end for loop
+
+            if (!searchRes) {
+                System.out.println("Did not find the name you were looking for.");
+                System.out.println();
+                System.out.println("Here is our contact list: ");
+                System.out.println(currentContacts);
+            }
+
+        System.out.println();
+        menu();
+
+    } //end of findContact Method
+
+    public static void exitContactMgr() throws IOException {
+        System.out.println("GoodBye!");
+        List<String> currentContacts = Files.readAllLines(filepath);
+        Files.write(filepath, currentContacts);
+    }
 }
