@@ -24,8 +24,8 @@ public class ContactManager {
         switch (input) {
             case 1:
                 ContactList.displayAllContacts();
-//            case 2:
-//                addNewContact();
+            case 2:
+                ContactList.addContact();
 //            case 3:
 //                deleteContact();
 //            case 4:
@@ -34,6 +34,17 @@ public class ContactManager {
                 System.out.println("GoodBye!");
                 return;
 
+        }
+    }
+
+    public static void recommence() throws IOException {
+        System.out.println("Would you like to continue? ");
+        Input choice = new Input();
+        if (choice.yesNo()) {
+            menu();
+        } else {
+            System.out.println("Process Ended");
+            System.exit(0);
         }
     }
 }

@@ -5,10 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ContactList extends ContactManager {
     public static Path filepath = Paths.get("src", "contacts.txt");
@@ -19,55 +16,47 @@ public class ContactList extends ContactManager {
 
     }
 
-//    public static void main (String[] args) throws IOException {
-//        // create directory & file
-//        String directory = "contactlist";
-//        String filename = "contacts.txt";
-//
-//        Path myDirectory = Paths.get(directory);
-//        Path myFile = Paths.get(directory, filename);
-//        System.out.println(myFile);
-//        System.out.println(myDirectory);
-//
-//        if(Files.notExists(myDirectory)) {
-//            Files.createDirectories(myDirectory);
-//        }
-//
-//        if(! Files.exists(myFile)) {
-//            Files.createFile(myFile);
-//        }
-//        writeToFile();
-//        readFileContents();
-//    }
-    // Add content to file
-//    public static void writeToFile()  throws IOException {
-//        Path filepath = Paths.get("contactlist", "contacts.txt");
-//        System.out.println(filepath);
-//
-//
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Please enter a new contact: ");
-//        String newContact = input.readLine();
-////        if (contactType == 1) {
-//        System.out.print("First Name: ");
-//        firstName = newContact.readLine();
-//        System.out.print("Last Name: ");
-//        lastName = keyIn.readLine();
-//        System.out.print("E-mail address: ");
-//        email = keyIn.readLine();
-//        System.out.print("Phone number: ");
-//        phone = keyIn.readLine();
-//
-//        List<String> contacts = Arrays.asList("Doe, John - 1234567890");
-//
-//        Files.write(filepath, contacts, StandardOpenOption.APPEND);
-//
-//        List<String> fileContents = Files.readAllLines(filepath);
-//    }
-//
-//    public static void readFileContents() throws IOException {
-//        Path filepath = Paths.get("contactlist", "contacts.txt");
-//        List<String> fileContents = Files.readAllLines(filepath);
-//        System.out.println(fileContents);
-//    }
+    public static void addContact() throws IOException {
+        Input entry = new Input();
+        System.out.print("Enter new contact Full Name and Phone Number: ");
+        String name = entry.getString();
+        new ContactManager();
+        try {
+            List<String> currentContacts = Files.readAllLines(filepath);
+            // Loop through contacts
+            for (String contact : currentContacts) {
+                System.out.println(currentContacts);
+                System.out.println("before: "+contact);
+                System.out.println("before: "+name);
+                // checking if name matches user input
+                if (contact.equalsIgnoreCase(name)) {
+                    System.out.println(contact);
+                    System.out.println(name);
+//                    System.out.println("added: " + name);
+                    System.out.println();
+                    new ContactManager();
+                    System.out.println("A contact with that name already exists.\n" +
+                            "Would you like to continue?");
+                } else {
+                    try {
+                        Files.write(filepath, Arrays.asList(name),StandardOpenOption.APPEND);
+                    } catch (IOException e) {
+                        System.out.println("Error name not added!");;
+                    }
+
+                    if (!entry.yesNo()) {
+                        ContactManager.recommence();
+                    }
+
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("ERROR");
+            ContactManager.recommence();
+        }
+
+
+
+    }
 }
