@@ -26,8 +26,8 @@ public class ContactManager {
                 ContactList.displayAllContacts();
             case 2:
                 ContactList.addContact();
-//            case 3:
-//                deleteContact();
+            case 3:
+                ContactList.deleteContact();
 //            case 4:
 //                findContact();
             case 5:

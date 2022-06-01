@@ -1,10 +1,2 @@
-Jack Blank | 1231231234
-Jane Doe | 2342342345
-Sam Space | 3453453456
-Cory Tidwell | 1234567890
-Cory Tidwell | 1234567890
-Jim Brown
-Jim Brown
-Jim Brown
-Jim Brown
-Jack Blank | 1231231234
+Jack Blank | 2105678923
+Sam Space  | 2105818123
