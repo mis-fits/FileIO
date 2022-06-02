@@ -14,6 +14,7 @@ public class ContactManager {
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit");
         System.out.println("Enter an option (1, 2, 3, 4 or 5)");
+        System.out.println("-----------------");
 
         userInput();
     }

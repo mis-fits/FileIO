@@ -13,8 +13,10 @@ public class ContactList extends ContactManager {
 
     public static void displayAllContacts() throws IOException {
         List<String> contacts = Files.readAllLines(filepath);
+        System.out.println("-----------------");
         System.out.println(contacts);
-
+        System.out.println("-----------------");
+        recommence();
     }
 
     public static void addContact() throws IOException {
@@ -52,7 +54,7 @@ public class ContactList extends ContactManager {
 //        }
 
         System.out.println();
-        menu();
+        recommence();
 
 
     } // end addContact Method
@@ -82,7 +84,7 @@ public class ContactList extends ContactManager {
         System.out.println("after delete: " + currentContacts);
 
         System.out.println();
-        menu();
+        recommence();
 
 
     } //end deleteContact Method
@@ -115,7 +117,7 @@ public class ContactList extends ContactManager {
             }
 
         System.out.println();
-        menu();
+        recommence();
 
     } //end of findContact Method
 
@@ -123,5 +125,6 @@ public class ContactList extends ContactManager {
         System.out.println("GoodBye!");
         List<String> currentContacts = Files.readAllLines(filepath);
         Files.write(filepath, currentContacts);
+        System.exit(0);
     }
 }

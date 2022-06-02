@@ -25,7 +25,8 @@ public class Input {
 //        System.out.println("Did you enjoy dinner last night? (yes/no) ");
         String userInput = scanner.next();
         if(userInput.equalsIgnoreCase("y") || userInput.equalsIgnoreCase("yes")) {
-            System.out.println(true);
+//            System.out.println(true);
+            System.out.println();
             return true;
         } else {
             System.out.println(false);
